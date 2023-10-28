@@ -5,6 +5,21 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        div#contents{
+            display: grid;
+            grid-template-columns: auto auto auto auto auto auto;
+            overflow: scroll;
+            gap: 5px;
+            width: 90%;
+            margin: auto;
+            text-align: center;
+        }
+        div#contents a{
+            height: 100px;
+            border: 1px solid black;
+        }
+    </style>
 </head>
 <body>
     <form action="/upload" method="post" enctype="multipart/form-data">
@@ -12,5 +27,15 @@
         <input type="file" name="file" id="file">
         <input type="submit" value="upload">
     </form>
+
+    <div><a href="fileviewer">see all files</a></div>
+
+    <div id="contents">
+        {% for file in files %}
+        <a href="preview/{{file}}">{{file}}</a>
+        {% endfor %}
+    </div>
+    <!-- <a href="main.py" download="main.py">python file</a><br>
+    <a href="templates/index.html" download="index.html">html file</a> -->
 </body>
 </html>
